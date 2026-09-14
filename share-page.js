@@ -11,6 +11,16 @@ const wechatGuideTitle = document.querySelector("[data-wechat-guide-title]");
 const wechatGuideCopy = document.querySelector("[data-wechat-guide-copy]");
 
 const defaultStatus = "分享后将显示标题、简介和品牌卡片。";
+const shareRevision = "4";
+
+const getShareUrl = () => {
+  const canonical =
+    document.querySelector('link[rel="canonical"]')?.getAttribute("href") ||
+    window.location.href.split("#")[0];
+  const url = new URL(canonical, window.location.href);
+  url.searchParams.set("share", shareRevision);
+  return url.toString();
+};
 
 const getShareData = () => ({
   title:
@@ -21,9 +31,7 @@ const getShareData = () => ({
     document
       .querySelector('meta[name="description"]')
       ?.getAttribute("content") || "驻留在家庭算力中的记忆生命体",
-  url:
-    document.querySelector('link[rel="canonical"]')?.getAttribute("href") ||
-    window.location.href.split("#")[0],
+  url: getShareUrl(),
 });
 
 const setStatus = (message) => {
@@ -81,7 +89,9 @@ const shareThroughSystem = async (data, action) => {
         ? "请在系统面板中选择分享方式。"
         : "请在系统面板中选择微信。",
     );
-    await navigator.share(data);
+    // A URL-only payload remains a native link object. Some receiving apps
+    // treat title + text + URL as plain text and consequently skip link cards.
+    await navigator.share({ url: data.url });
     closeShareDialog();
     return;
   }
