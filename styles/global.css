@@ -2871,24 +2871,28 @@ html:not([data-famorise-color-mode="night"]) .macos-symbol {
     font-size: 14px;
   }
   .lifeform-portrait {
-    min-height: 500px;
-    border-radius: 26px;
+    width: min(88vw, 420px);
+    min-height: 390px;
+    border-radius: 24px;
   }
   .lifeform-portrait::before {
-    inset: 13% 5%;
+    inset: 13% 8%;
   }
   .lifeform-portrait::after {
-    inset: 23% 16%;
+    inset: 22% 19%;
   }
   .lifeform-portrait > img {
-    bottom: 55px;
-    width: min(76%, 360px);
+    bottom: 54px;
+    width: min(58%, 244px);
   }
   .memory-signal {
-    min-width: 104px;
-    padding-top: 9px;
-    padding-bottom: 9px;
-    font-size: 11px;
+    min-width: 92px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 10px;
+  }
+  .memory-signal small {
+    font-size: 8px;
   }
   .signal-photo,
   .signal-revisit {
@@ -2899,21 +2903,22 @@ html:not([data-famorise-color-mode="night"]) .macos-symbol {
     right: 3%;
   }
   .signal-photo {
-    top: 8%;
+    top: 7%;
   }
   .signal-person {
-    top: 17%;
+    top: 15%;
   }
   .signal-revisit {
-    bottom: 25%;
+    bottom: 27%;
   }
   .signal-time {
-    bottom: 29%;
+    bottom: 31%;
   }
   .lifeform-status {
-    right: 12px;
-    bottom: 12px;
-    left: 12px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    padding: 12px 14px;
   }
   .lifeform-pillars {
     grid-template-columns: repeat(2, 1fr);
